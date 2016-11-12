@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10a8f1bc-366e-4248-aff3-25231325f26e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generic-conf.php" afterPath="$PROJECT_DIR$/generic-conf.php" />
-    </list>
+    <list default="true" id="10a8f1bc-366e-4248-aff3-25231325f26e" name="Default" comment="" />
     <ignored path="wpcfg.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -130,12 +128,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1478984489775</updated>
-      <workItem from="1478984491086" duration="472000" />
+      <workItem from="1478984491086" duration="494000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="472000" />
+    <option name="totallyTimeSpent" value="494000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />

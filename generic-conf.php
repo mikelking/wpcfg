@@ -9,7 +9,7 @@
 */
 require(__DIR__ . '/server-conf-base.php');
 
-class ServerConfig implements ServerConfigBase {
+class ServerConfig extends ServerConfigBase {
 
 	public function set_db_credentials() {
 		$this->password = '%%PASSWORD%%';

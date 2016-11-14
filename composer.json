@@ -15,7 +15,13 @@
             "name": "Mikel King",
             "email": "mikel.king@olivent.com",
             "homepage": "https://github.com/mikelking"
-    }
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/mikelking/wordpress-config-installer"
+        }
     ],
     "require": {
         "php": ">=5.5",

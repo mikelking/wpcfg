@@ -10,6 +10,7 @@ class ServerConfFinder {
 	const FILE_SUFFIX = '-conf.php';
 	const DEV_SITE    = 'dev';
 	const TEST_SITE   = 'test';
+	const DIR_DELIM   = '/';
 
 	public $server_cfg;
 	public $server_name;
@@ -17,8 +18,8 @@ class ServerConfFinder {
 	public $conf_file;
 	
 	public function __construct( $environment = null ) {
-		$this->set_environment($environment);
-		date_default_timezone_set("America/New_York");
+		$this->set_environment( $environment );
+		date_default_timezone_set( "America/New_York" );
 		$this->get_server_name();
 
 		$this->get_environment();
@@ -26,7 +27,7 @@ class ServerConfFinder {
 	}
 
 	public function set_environment( $environment = null ) {
-		if (isset($environment)) {
+		if ( isset( $environment ) ) {
 			$this->environment = $environment;
 		}
 	}
@@ -55,42 +56,48 @@ class ServerConfFinder {
 			$this->environment = self::DEV_SITE;
 		} elseif ( $this->is_test_site() ) {
 			$this->environment = self::TEST_SITE;
-		} elseif ( ! isset($this->environment) ) {
+		} elseif ( ! isset( $this->environment ) ) {
 			$this->environment = 'production';
-			if (isset($_SERVER['ENVIRONMENT'])) {
+			if ( isset( $_SERVER['ENVIRONMENT'] ) ) {
 				$this->environment = $_SERVER['ENVIRONMENT'];
 			}
 		}
-		return($this->environment);
+		return( $this->environment );
 	}
 
+	/**
+	 * This system should examine the present path and one level higher for the appropriate configuration file
+	 * as defined by the apache ENVIRONMENT.
+	 * @return null|string
+	 */
 	public function get_conf_file() {
-		$config_file = __DIR__ . '/' . $this->environment . self::FILE_SUFFIX;
-		if (file_exists($config_file)) {
+		$config_file = __DIR__ . self::DIR_DELIM . $this->environment . self::FILE_SUFFIX;
+		if ( file_exists(  $config_file ) ) {
 			$this->conf_file = $config_file;
+		} elseif  ( file_exists( __DIR__ . self::DIR_DELIM . $config_file ) ) {
+			$this->conf_file = __DIR__ . self::DIR_DELIM . $config_file;
 		} else {
 		   $this->conf_file = null; 
 		}
-		return($this->conf_file);
+		return( $this->conf_file );
 	}
 
 	public function get_config() {
-		if ($this->get_conf_file()) {
-			require($this->get_conf_file());
-			$this->server_cfg = new ServerConfig();
+		if ( $this->get_conf_file() ) {
+			require( $this->get_conf_file() );
 		} else {
 			error_log ( 'Config file ' . $this->get_conf_file() . ' NOT found on ' . $this->get_server_name() . '. Fatal failure to require it.', 0 );
 			$this->server_cfg = null;
 		}
-		return($this->server_cfg);
+		return( $this->server_cfg );
 	}
 
-	public function debug_conf_file() {		
-		if (file_exists($this->get_conf_file())) {
-			print('The ' . $this->conf_file . ' environment file will be included as required.' . PHP_EOL);
+	public function debug_conf_file() {
+		if ( file_exists( $this->get_conf_file() ) ) {
+			print( 'The ' . $this->conf_file . ' environment file will be included as required.' . PHP_EOL );
 		} else {
-			print('The ' . $this->conf_file . ' environment file was not found and can not be included as 
-required.' . PHP_EOL);
+			print( 'The ' . $this->conf_file . ' environment file was not found and can not be included as 
+required.' . PHP_EOL );
 		}
 	}
 }

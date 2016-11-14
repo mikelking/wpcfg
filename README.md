@@ -1,6 +1,6 @@
 # WordPress Configurator
 
-- So with this we now have a common config system for WordPress. It relies on the Set Env being properly set in your Apache (httpd.conf) or vhost config. Assuming you had a vhost like the following:
+- So with this we now have a common config system for WordPress. It relies on the Set Env being properly set in your Apache (httpd.conf) or vhost config. Assuming you had a www.DOMAIN.com vhost like the following:
 
 ```
 <VirtualHost *:80>

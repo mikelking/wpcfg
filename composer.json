@@ -2,7 +2,7 @@
     "name": "mikelking/wpcfg",
     "description": "WordPress configuration framework.",
     "keywords": ["wp-config", "framework"],
-    "type": "project",
+    "type": "wordpress-config",
     "homepage": "http://jafdip.com/",
     "license": "BSD-3",
     "authors": [

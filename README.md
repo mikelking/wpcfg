@@ -1,6 +1,6 @@
 # WordPress Configurator
 
-- So with this we now have a common config system for WordPress. It relies on the Set EnvIF being properly set in your Apache (httpd.conf) or vhost config. Assuming you had a vhost like the following:
+- So with this we now have a common config system for WordPress. It relies on the Set Env being properly set in your Apache (httpd.conf) or vhost config. Assuming you had a vhost like the following:
 
 ```
 <VirtualHost *:80>
@@ -9,7 +9,7 @@
   ServerAlias DOMAIN.com
   DocumentRoot /data/DOMAIN.com/wproot/wordpress
   DirectoryIndex index.php
-  Set EnvIf ENVIRONMENT production
+  Set Env ENVIRONMENT production
   php_value date.timezone "America/New_York"
   php_flag log_errors On
   php_value error_reporting 32767

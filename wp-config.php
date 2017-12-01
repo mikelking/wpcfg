@@ -13,60 +13,54 @@
  * Ultimately this may need to become some sort of additional composer project.
  */
 
-define( 'DISALLOW_FILE_EDIT', true );
-define( 'DISALLOW_FILE_MODS', true );
-define( 'AUTOSAVE_INTERVAL', 86400 ); // 1 day
-
 require( 'class_server_conf_finder.php' );
 $scf = new ServerConfFinder();
 
-if ( $scf->server_cfg->check_debug_options() ) {
-	define( 'WP_DEBUG', $scf->server_cfg->wpdbg );
-	define( 'WP_DEBUG_LOG', $scf->server_cfg->dbg_log );
-	define( 'WP_DEBUG_DISPLAY', $scf->server_cfg->show_errors );
-	define( 'SCRIPT_DEBUG', $scf->server_cfg->script_dbg );
-	define( 'SAVEQUERIES', $scf->server_cfg->save_queries );
-	define( 'DEBUG_MKE_API', $scf->server_cfg->mke_api );
-} else {
-	define( 'WP_DEBUG',false );
-}
+define( 'DEFAULT_TIMEZONE', $scf->server_cfg->DEFAULT_TIMEZONE );
 
-if ( $scf->server_cfg->check_logging_options() ) {
-	define( 'DEFAULT_TIMEZONE', $scf->server_cfg->default_timezone_set );
-	define( 'DEFAULT_ERROR_LEVEL', $scf->server_cfg->error_level );
-	define( 'MKE_API_LOGGING', $scf->server_cfg->mke_api_response );
-	define( 'ENHANCED_MKE_API_LOGGING', $scf->server_cfg->mke_api_request );
-	error_reporting( $scf->server_cfg->reporting_level );
-}
-
-if ( $scf->server_cfg->check_caching_options() ) {
-	define( 'WP_CACHE', $scf->server_cfg->wp_caching );
-	$memcached_servers = $scf->server_cfg->memcached_servers;
-}
-
-define( 'DB_NAME', $scf->server_cfg->db );
-define( 'DB_USER', $scf->server_cfg->user );
-define( 'DB_PASSWORD', $scf->server_cfg->password );
-define( 'DB_HOST', $scf->server_cfg->host );
+define( 'DB_NAME', $scf->server_cfg->DB_NAME );
+define( 'DB_USER', $scf->server_cfg->DB_USER );
+define( 'DB_PASSWORD', $scf->server_cfg->DB_PASSWORD );
+define( 'DB_HOST', $scf->server_cfg->DB_HOST );
 define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );
 
+define( 'WP_DEBUG', $scf->server_cfg->DEBUG );
+define( 'WP_DEBUG_LOG', $scf->server_cfg->LOG_ERRORS );
+define( 'WP_DEBUG_DISPLAY', $scf->server_cfg->SHOW_ERRORS );
+define( 'SCRIPT_DEBUG', $scf->server_cfg->SCRIPT_DEBUG );
+define( 'SAVEQUERIES', $scf->server_cfg->SAVE_QUERIES );
 
-define( 'AUTH_KEY',  $scf->server_cfg->auth_key );
-define( 'SECURE_AUTH_KEY',   $scf->server_cfg->secure_auth_key );
-define( 'LOGGED_IN_KEY', $scf->server_cfg->logged_in_key );
-define( 'NONCE_KEY', $scf->server_cfg->nonce_key );
-define( 'AUTH_SALT', $scf->server_cfg->auth_salt );
-define( 'SECURE_AUTH_SALT',  $scf->server_cfg->secure_auth_salt );
-define( 'LOGGED_IN_SALT', $scf->server_cfg->logged_in_salt );
-define( 'NONCE_SALT', $scf->server_cfg->nonce_salt );
-define( 'WP_CACHE_KEY_SALT', $scf->server_cfg->wp_cache_salt );
+define( 'DISALLOW_FILE_EDIT', $scf->server_cfg->BLOCK_FILE_EDITS );
+define( 'DISALLOW_FILE_MODS', $scf->server_cfg->BLOCK_FILE_MODS );
+define( 'AUTOSAVE_INTERVAL', $scf->server_cfg->AUTO_SAVE_DELAY ); // 1 day
+
+
+if ( $scf->server_cfg->check_logging_options() ) {
+	define( 'DEFAULT_ERROR_LEVEL', $scf->server_cfg->error_level );
+	error_reporting( $scf->server_cfg->reporting_level );
+}
+
+define( 'WP_CACHE', $scf->server_cfg->WP_CACHE );
+if ( isset( $scf->server_cfg->memcached_servers ) ) {
+	$memcached_servers = $scf->server_cfg->memcached_servers;
+}
+
+define( 'AUTH_KEY',  $scf->server_cfg->get_auth_key() );
+define( 'SECURE_AUTH_KEY',   $scf->server_cfg->get_secure_auth_key() );
+define( 'LOGGED_IN_KEY', $scf->server_cfg->get_logged_in_key() );
+define( 'NONCE_KEY', $scf->server_cfg->get_nonce_key() );
+define( 'AUTH_SALT', $scf->server_cfg->get_auth_salt() );
+define( 'SECURE_AUTH_SALT',  $scf->server_cfg->get_secure_auth_salt() );
+define( 'LOGGED_IN_SALT', $scf->server_cfg->get_logged_in_salt() );
+define( 'NONCE_SALT', $scf->server_cfg->get_nonce_salt() );
+define( 'WP_CACHE_KEY_SALT', $scf->server_cfg->get_cache_salt() );
 /**#@-*/
 
 /** Override the WordPress setting for the Blog URL **/
 /** Allow development environment movement */
-define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
-define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] );
+define('WP_HOME', $scf->server_cfg->get_sitename());
+define('WP_SITEURL', $scf->server_cfg->get_sitename());
 
 define( 'WP_MEMORY_LIMIT', '512M' );
 

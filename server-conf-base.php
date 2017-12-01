@@ -5,41 +5,52 @@
 	@version 1.3
 */
 
+require( 'cli-controller.php' );
+
+/**
+ * Class ServerConfigBase
+ *
+ * The grouping are intentional to make the settings more readable.
+ */
 abstract class ServerConfigBase {
+	const VERSION          = '2.0';
+	const SITE_ID          = 0; // used for single site 2 multi site consistency
+	const SITENAME         = ''; // user for wp cli
+	const SITE_SALT        = ''; // Used in the salt and key generator
 	const ENABLED          = true;
 	const DISABLED         = false;
-	const REPORTING_LEVEL  = 0;
+	const PROTOCOL         = 'http';
+	const PROTOCOL_DELIM   = '://';
 	const DEFAULT_TIMEZONE = 'America/New_York';
 
-	public $password;
-	public $db;
-	public $user;
-	public $host;
+	// DB Access
+	const DB_PASSWORD = '';
+	const DB_USER     = '';
+	const DB_NAME     = '';
+	const DB_HOST     = '';
+
+	// Caching
+	const WP_CACHE = false;
+
+	// Debugging
+	const DEBUG        = false;
+	const LOG_ERRORS   = false;
+	const SHOW_ERRORS  = false;
+	const SCRIPT_DEBUG = false;
+	const SAVE_QUERIES = false;
+
+	// Setup Logging
+	const REPORTING_LEVEL  = 0;
+	const ERROR_LEVEL      = E_ALL;
+
+	// Various WordPress settings
+	const AUTO_SAVE_DELAY  = 86400; // seconds
+	const BLOCK_FILE_EDITS = false;
+	const BLOCK_FILE_MODS  = false;
+
 	public $db_cfg;
-
-	public $auth_key;
-	public $secure_auth_key;
-	public $logged_in_key;
-	public $nonce_key;
-	public $auth_salt;
-	public $secure_auth_salt;
-	public $logged_in_salt;
-	public $nonce_salt;
-
 	public $memcached_servers;
-	public $wp_caching;
-	public $default_time_zone;
-	public $error_level;
-	public $reporting_level;
 
-	public $wpdbg;
-	public $dbg_log;
-	public $show_errors;
-	public $script_dbg;
-	public $save_queries;
-	public $mke_api;
-	public $mke_api_response;
-	public $mke_api_request;
 
 	public function __construct() {
 		$this->set_db_credentials();
@@ -50,9 +61,51 @@ abstract class ServerConfigBase {
 		$this->set_debug_options();
 	}
 
-	abstract public function set_db_credentials();
+	public function get_version() {
+		return( static::class . ' Version: ' . static::VERSION . PHP_EOL );
+	}
 
-	abstract public function set_keys_and_salts();
+	public function get_salted_hash( $key ) {
+		return( sha1( static::SITE_SALT . $key ) );
+	}
+
+	public function get_auth_key() {
+		return( $this->get_salted_hash( 'auth_key' ) );
+	}
+
+	public function get_secure_auth_key() {
+		return( $this->get_salted_hash( 'secure_auth_key' ) );
+	}
+
+
+	public function get_logged_in_key() {
+		return( $this->get_salted_hash( 'logged_in_key' ) );
+	}
+
+	public function get_nonce_key() {
+		return( $this->get_salted_hash( 'nonce_key' ) );
+	}
+
+	public function get_auth_salt() {
+		return( $this->get_salted_hash( 'auth_salt' ) );
+	}
+
+	public function get_secure_auth_salt() {
+		return( $this->get_salted_hash( 'secure_auth_salt' ) );
+	}
+
+	public function get_logged_in_salt() {
+		return( $this->get_salted_hash( 'logged_in_salt' ) );
+	}
+
+
+	public function get_nonce_salt() {
+		return( $this->get_salted_hash( 'nonce_salt' ) );
+	}
+
+	public function get_cache_salt() {
+		return( $this->get_salted_hash( 'cache_salt' ) );
+	}
 
 	abstract public function set_caching_options();
 
@@ -96,5 +149,16 @@ abstract class ServerConfigBase {
 		);
 	}
 
+	/**
+	 * @return string
+	 */
+	public function get_sitename() {
+		$schema = static::PROTOCOL . self::PROTOCOL_DELIM;
+		if ( CLI_Controller::is_cli() && $this->sitename !== '' ) {
+			return( $schema . static::SITENAME );
+		} else {
+			return( $schema . $_SERVER['HTTP_HOST'] );
+		}
+	}
 
 }

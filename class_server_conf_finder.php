@@ -7,6 +7,7 @@
 */
 
 class ServerConfFinder {
+	const VERSION     = '1.0';
 	const FILE_SUFFIX = '-conf.php';
 	const DEV_SITE    = 'dev';
 	const TEST_SITE   = 'test';
@@ -24,6 +25,10 @@ class ServerConfFinder {
 
 		$this->get_environment();
 		$this->get_config();
+	}
+
+	public function get_version() {
+		return( static::class . ' Version: ' . static::VERSION . PHP_EOL );
 	}
 
 	public function set_environment( $environment = null ) {

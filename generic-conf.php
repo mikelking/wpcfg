@@ -64,10 +64,10 @@ class ServerConfig extends ServerConfigBase {
 
 	public function set_hyperdb_cfg() {
 		$db_cfg = array(
-			'host'          => $this->host,
-			'user'          => $this->user,
-			'password'      => $this->password,
-			'name'          => $this->db,
+			'host'          => static::DB_HOST,
+			'user'          => static::DB_USER,
+			'password'      => static::DB_PASSWORD,
+			'name'          => static::DB_NAME,
 			'write'         => 1,
 			'read'          => 1,
 			'dataset'       => 'global',

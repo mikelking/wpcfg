@@ -35,7 +35,6 @@ define( 'DISALLOW_FILE_EDIT', $scf->server_cfg->BLOCK_FILE_EDITS );
 define( 'DISALLOW_FILE_MODS', $scf->server_cfg->BLOCK_FILE_MODS );
 define( 'AUTOSAVE_INTERVAL', $scf->server_cfg->AUTO_SAVE_DELAY ); // 1 day
 
-
 if ( $scf->server_cfg->check_logging_options() ) {
 	define( 'DEFAULT_ERROR_LEVEL', $scf->server_cfg->error_level );
 	error_reporting( $scf->server_cfg->reporting_level );

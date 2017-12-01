@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="10a8f1bc-366e-4248-aff3-25231325f26e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
     </list>
     <ignored path="wpcfg.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -282,11 +281,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479146598569</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updated the composer manifest.">
+      <created>1512164464100</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1512164464101</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10235000" />
+    <option name="totallyTimeSpent" value="10283000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="5" y="23" width="1833" height="1007" extended-state="0" />
@@ -355,7 +361,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated the readme." />
     <MESSAGE value="Corrected the readme." />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected the readme." />
+    <MESSAGE value="Updated the composer manifest." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the composer manifest." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

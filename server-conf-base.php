@@ -24,10 +24,13 @@ abstract class ServerConfigBase {
 	const DEFAULT_TIMEZONE = 'America/New_York';
 
 	// DB Access
-	const DB_PASSWORD = '';
-	const DB_USER     = '';
-	const DB_NAME     = '';
-	const DB_HOST     = '';
+	const DB_PASSWORD  = '';
+	const DB_USER      = '';
+	const DB_NAME      = '';
+	const DB_HOST      = '';
+	const DB_CHARSET   = 'utf8';
+	const DB_COLLATE   = '';
+	const TABLE_PREFIX = 'wp_';
 
 	// Caching
 	const WP_CACHE = false;
@@ -43,10 +46,43 @@ abstract class ServerConfigBase {
 	const REPORTING_LEVEL  = 0;
 	const ERROR_LEVEL      = E_ALL;
 
-	// Various WordPress settings
-	const AUTO_SAVE_DELAY  = 86400; // seconds
+	// CMS Settings
+	const AUTO_SAVE_DELAY       = 86400; // seconds
+	const WP_TURN_OFF_ADMIN_BAR = false;
+	const WP_POST_REVISIONS     = false;
+
+	// File System
 	const BLOCK_FILE_EDITS = false;
 	const BLOCK_FILE_MODS  = false;
+	const FS_CHMOD_DIR     = 0775;
+	const FS_CHMOD_FILE    = 0664;
+	const DEFAULT_UMASK    = 0002;
+
+	// System Updates
+	const AUTOMATIC_UPDATER_DISABLED = true;
+	const WP_AUTO_UPDATE_CORE        = false;
+
+	// Security SSL not necessary if you entire site is HTTPS
+	const COOKIE_DOMAIN = '';
+	const FORCE_SSL_LOGIN = false;
+	const FORCE_SSL_ADMIN = false;
+
+	// Performance
+	const WP_MEMORY_LIMIT     = '512M';
+	const CONCATENATE_SCRIPTS = false;
+
+	// MulitSite
+	const MULTISITE           = false;
+	const WP_ALLOW_MULTISITE  = false;
+	const SUBDOMAIN_INSTALL   = false;
+	const DOMAIN_CURRENT_SITE = '';
+	const PATH_CURRENT_SITE   = '/';
+	const SITE_ID_CURRENT_SITE = 1;
+	const BLOG_ID_CURRENT_SITE = 1;
+
+	// Misc
+	const SUNRISE         = false;
+	const DISABLE_WP_CRON = false;
 
 	public $db_cfg;
 	public $memcached_servers;
@@ -116,31 +152,6 @@ abstract class ServerConfigBase {
 		for server in the database cluster
 	*/
 	abstract public function set_hyperdb_cfg();
-
-	/*
-		refer to: https://codex.wordpress.org/Debugging_in_WordPress
-	*/
-	abstract public function set_debug_options();
-
-	/*
-		The following check_ methods strongly suggest implementation hinting
-		of the related abstract methods listed above.
-	*/
-
-	public function check_debug_options() {
-		return(
-				$this->wpdbg || $this->dbg_log ||
-				$this->show_errors || $this->script_dbg ||
-				$this->save_queries || $this->mke_api
-		);
-	}
-
-	public function check_logging_options() {
-		return(
-				$this->default_timezone_set || $this->error_level ||
-				$this->mke_api_response || $this->mke_api_request
-		);
-	}
 
 	public function check_caching_options() {
 		return(

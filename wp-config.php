@@ -74,7 +74,7 @@ define( 'WP_AUTO_UPDATE_CORE', false );
 define( 'WP_TURN_OFF_ADMIN_BAR', $scf->server_cfg::WP_TURN_OFF_ADMIN_BAR );
 define( 'WP_POST_REVISIONS', $scf->server_cfg::WP_POST_REVISIONS );
 
-define( 'SUNRISE', $scf->server_cfg::SUNRISE );
+//define( 'SUNRISE', $scf->server_cfg::SUNRISE );
 define( 'DISABLE_WP_CRON', $scf->server_cfg::DISABLE_WP_CRON );
 
 define( 'FORCE_SSL_LOGIN', $scf->server_cfg::FORCE_SSL_LOGIN );

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10a8f1bc-366e-4248-aff3-25231325f26e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server-conf-base.php" afterPath="$PROJECT_DIR$/server-conf-base.php" />
     </list>
     <ignored path="wpcfg.iws" />
@@ -25,7 +26,7 @@
       <file leaf-file-name="wp-config.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
+            <state relative-caret-position="422">
               <caret line="94" column="65" lean-forward="false" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="65" />
               <folding />
             </state>
@@ -35,11 +36,11 @@
       <file leaf-file-name="server-conf-base.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server-conf-base.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="51" column="36" lean-forward="false" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+            <state relative-caret-position="92">
+              <caret line="143" column="5" lean-forward="false" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
               <folding>
                 <element signature="e#134#238#0#PHP" expanded="true" />
-                <element signature="e#3904#3931#0#PHP" expanded="true" />
+                <element signature="e#3648#3675#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -239,7 +240,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13521000" />
+    <option name="totallyTimeSpent" value="13823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="5" y="23" width="1248" height="732" extended-state="0" />
@@ -494,7 +495,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
+        <state relative-caret-position="422">
           <caret line="94" column="65" lean-forward="false" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="65" />
           <folding />
         </state>
@@ -502,11 +503,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server-conf-base.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="51" column="36" lean-forward="false" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+        <state relative-caret-position="92">
+          <caret line="143" column="5" lean-forward="false" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
           <folding>
             <element signature="e#134#238#0#PHP" expanded="true" />
-            <element signature="e#3904#3931#0#PHP" expanded="true" />
+            <element signature="e#3648#3675#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

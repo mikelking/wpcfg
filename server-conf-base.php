@@ -143,16 +143,6 @@ abstract class ServerConfigBase {
 		return( $this->get_salted_hash( 'cache_salt' ) );
 	}
 
-	abstract public function set_caching_options();
-
-	abstract public function set_logging_options();
-
-	/*
-		HyperDB is tricky in that you should have distinct credentials
-		for server in the database cluster
-	*/
-	abstract public function set_hyperdb_cfg();
-
 	public function check_caching_options() {
 		return(
 				$this->wp_caching ||

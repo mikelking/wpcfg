@@ -25,9 +25,11 @@
       <file leaf-file-name="wp-config.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="76" column="2" lean-forward="false" selection-start-line="76" selection-start-column="2" selection-end-line="76" selection-end-column="2" />
-              <folding />
+            <state relative-caret-position="134">
+              <caret line="66" column="51" lean-forward="false" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="51" />
+              <folding>
+                <element signature="e#2671#2797#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -258,7 +260,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18342000" />
+    <option name="totallyTimeSpent" value="19171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="5" y="23" width="1248" height="732" extended-state="0" />
@@ -373,7 +375,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="447">
           <caret line="72" column="39" lean-forward="true" selection-start-line="72" selection-start-column="39" selection-end-line="72" selection-end-column="39" />
-          <folding />
+          <folding>
+            <element signature="e#2671#2797#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -524,9 +528,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="76" column="2" lean-forward="false" selection-start-line="76" selection-start-column="2" selection-end-line="76" selection-end-column="2" />
-          <folding />
+        <state relative-caret-position="134">
+          <caret line="66" column="51" lean-forward="false" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="51" />
+          <folding>
+            <element signature="e#2671#2797#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

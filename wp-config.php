@@ -60,7 +60,11 @@ define( 'LOGGED_IN_SALT', $scf->server_cfg->logged_in_salt );
 define( 'NONCE_SALT', $scf->server_cfg->nonce_salt );
 define( 'WP_CACHE_KEY_SALT', $scf->server_cfg->cache_salt );
 
-define( 'COOKIE_DOMAIN', $scf->server_cfg::COOKIE_DOMAIN );
+/**
+ * Needs to check multisite constant and adjust CD accordingly
+ * temporarily removing $scf->server_cfg::COOKIE_DOMAIN
+ */
+define( 'COOKIE_DOMAIN', $scf->server_cfg->sitename );
 
 /** Override the WordPress setting for the Blog URL **/
 /** Allow development environment movement */

@@ -65,6 +65,36 @@ define( 'WP_MEMORY_LIMIT', '512M' );
 
 define( 'CONCATENATE_SCRIPTS', false );
 
+define( 'AUTOMATIC_UPDATER_DISABLED', true ); // Disable all WordPress auto-updates
+define( 'WP_AUTO_UPDATE_CORE', false ); // Only disable core updates
+#define( 'WP_AUTO_UPDATE_CORE', 'minor' ); // Only enable minor core updates
+
+define( 'FS_CHMOD_DIR', 0775 );
+define( 'FS_CHMOD_FILE', 0664 );
+umask(0002);
+define( 'DISALLOW_FILE_EDIT', FALSE );
+define( 'DISALLOW_FILE_MODS', FALSE );
+
+define( 'DISABLE_WP_CRON', false );
+
+define( 'FORCE_SSL_LOGIN', false );
+
+define( 'WP_TURN_OFF_ADMIN_BAR', false );
+
+#define( 'SUNRISE', true );
+
+define( 'WP_POST_REVISIONS', FALSE );
+
+define( 'WP_ALLOW_MULTISITE', true );
+
+define( 'MULTISITE', true );
+define( 'SUBDOMAIN_INSTALL', true );
+define( 'DOMAIN_CURRENT_SITE', 'olivent.net' );
+define( 'PATH_CURRENT_SITE', '/' );
+define( 'SITE_ID_CURRENT_SITE', 1 );
+define( 'BLOG_ID_CURRENT_SITE', 1 );
+
+
 //Disable internal Wp-Cron function
 /* define('DISABLE_WP_CRON', true); */
 

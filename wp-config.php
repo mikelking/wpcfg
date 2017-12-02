@@ -50,12 +50,12 @@ if ( isset( $scf->server_cfg->memcached_servers ) ) {
 	$memcached_servers = $scf->server_cfg->memcached_servers;
 }
 
-define( 'AUTH_KEY',  $scf->server_cfg->auth_key );
-define( 'SECURE_AUTH_KEY',   $scf->server_cfg->secure_auth_key );
+define( 'AUTH_KEY', $scf->server_cfg->auth_key );
+define( 'SECURE_AUTH_KEY', $scf->server_cfg->secure_auth_key );
 define( 'LOGGED_IN_KEY', $scf->server_cfg->logged_in_key );
 define( 'NONCE_KEY', $scf->server_cfg->nonce_key );
 define( 'AUTH_SALT', $scf->server_cfg->auth_salt );
-define( 'SECURE_AUTH_SALT',  $scf->server_cfg->secure_auth_salt );
+define( 'SECURE_AUTH_SALT', $scf->server_cfg->secure_auth_salt );
 define( 'LOGGED_IN_SALT', $scf->server_cfg->logged_in_salt );
 define( 'NONCE_SALT', $scf->server_cfg->nonce_salt );
 define( 'WP_CACHE_KEY_SALT', $scf->server_cfg->cache_salt );

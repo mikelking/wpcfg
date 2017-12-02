@@ -32,18 +32,18 @@ abstract class ServerConfigBase {
 	const TABLE_PREFIX = 'wp_';
 
 	// Keys
-	const AUTH_KEY        = 'auth_key';
-	const SECURE_AUTH_KEY = 'secure_auth_key';
-	const LOGGED_IN_KEY   = 'logged_in_key';
-	const NONCE_KEY       = 'nonce_key';
+	const AUTH_KEY        = 'AUTH_KEY';
+	const SECURE_AUTH_KEY = 'SECURE_AUTH_KEY';
+	const LOGGED_IN_KEY   = 'LOGGED_IN_KEY';
+	const NONCE_KEY       = 'NONCE_KEY';
 
 	// Salts
 	const SITE_SALT        = ''; // Used in the salt and key generator
-	const AUTH_SALT        = 'auth_salt';
-	const SECURE_AUTH_SALT = 'secure_auth_salt';
-	const LOGGED_IN_SALT   = 'logged_in_salt';
-	const NONCE_SALT       = 'nonce_salt';
-	const CACHE_SALT       = 'cache_salt';
+	const AUTH_SALT        = 'AUTH_SALT';
+	const SECURE_AUTH_SALT = 'SECURE_AUTH_SALT';
+	const LOGGED_IN_SALT   = 'LOGGED_IN_SALT';
+	const NONCE_SALT       = 'NONCE_SALT';
+	const CACHE_SALT       = 'WP_CACHE_KEY_SALT';
 
 	// Caching
 	const WP_CACHE = false;
@@ -149,5 +149,23 @@ abstract class ServerConfigBase {
 		}
 		return( $this->sitename = $_SERVER['REQUEST_SCHEME'] . self::PROTOCOL_DELIM . $_SERVER['HTTP_HOST'] );
 	}
+
+	function __toString() {
+		$fmt = "define( %s, '%s' );\n";
+		//print( $this->sitename );
+
+		$output  = sprintf( $fmt, static::AUTH_KEY, $this->auth_key );
+		$output .= sprintf( $fmt, static::SECURE_AUTH_KEY, $this->secure_auth_key );
+		$output .= sprintf( $fmt, static::LOGGED_IN_KEY, $this->logged_in_key );
+		$output .= sprintf( $fmt, static::NONCE_KEY, $this->nonce_key );
+		$output .= sprintf( $fmt, static::AUTH_SALT, $this->auth_salt );
+		$output .= sprintf( $fmt, static::SECURE_AUTH_SALT, $this->secure_auth_salt );
+		$output .= sprintf( $fmt, static::LOGGED_IN_SALT, $this->logged_in_salt );
+		$output .= sprintf( $fmt, static::NONCE_SALT, $this->nonce_salt );
+		$output .= sprintf( $fmt, static::CACHE_SALT, $this->cache_salt );
+
+		return( $output );
+	}
+
 
 }

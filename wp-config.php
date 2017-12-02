@@ -50,22 +50,22 @@ if ( isset( $scf->server_cfg->memcached_servers ) ) {
 	$memcached_servers = $scf->server_cfg->memcached_servers;
 }
 
-define( 'AUTH_KEY',  $scf->server_cfg->get_auth_key() );
-define( 'SECURE_AUTH_KEY',   $scf->server_cfg->get_secure_auth_key() );
-define( 'LOGGED_IN_KEY', $scf->server_cfg->get_logged_in_key() );
-define( 'NONCE_KEY', $scf->server_cfg->get_nonce_key() );
-define( 'AUTH_SALT', $scf->server_cfg->get_auth_salt() );
-define( 'SECURE_AUTH_SALT',  $scf->server_cfg->get_secure_auth_salt() );
-define( 'LOGGED_IN_SALT', $scf->server_cfg->get_logged_in_salt() );
-define( 'NONCE_SALT', $scf->server_cfg->get_nonce_salt() );
-define( 'WP_CACHE_KEY_SALT', $scf->server_cfg->get_cache_salt() );
+define( 'AUTH_KEY',  $scf->server_cfg->auth_key );
+define( 'SECURE_AUTH_KEY',   $scf->server_cfg->secure_auth_key );
+define( 'LOGGED_IN_KEY', $scf->server_cfg->logged_in_key );
+define( 'NONCE_KEY', $scf->server_cfg->nonce_key );
+define( 'AUTH_SALT', $scf->server_cfg->auth_salt );
+define( 'SECURE_AUTH_SALT',  $scf->server_cfg->secure_auth_salt );
+define( 'LOGGED_IN_SALT', $scf->server_cfg->logged_in_salt );
+define( 'NONCE_SALT', $scf->server_cfg->nonce_salt );
+define( 'WP_CACHE_KEY_SALT', $scf->server_cfg->cache_salt );
 
 define( 'COOKIE_DOMAIN', $scf->server_cfg->COOKIE_DOMAIN );
 
 /** Override the WordPress setting for the Blog URL **/
 /** Allow development environment movement */
-define('WP_HOME', $scf->server_cfg->get_sitename());
-define('WP_SITEURL', $scf->server_cfg->get_sitename());
+define( 'WP_HOME', $scf->server_cfg->sitename );
+define( 'WP_SITEURL', $scf->server_cfg->sitename );
 
 define( 'AUTOMATIC_UPDATER_DISABLED', true );
 define( 'WP_AUTO_UPDATE_CORE', false );

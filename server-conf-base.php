@@ -16,7 +16,6 @@ abstract class ServerConfigBase {
 	const VERSION          = '2.0';
 	const SITE_ID          = 0; // used for single site 2 multi site consistency
 	const SITENAME         = ''; // user for wp cli
-	const SITE_SALT        = ''; // Used in the salt and key generator
 	const ENABLED          = true;
 	const DISABLED         = false;
 	const PROTOCOL         = 'http';
@@ -31,6 +30,20 @@ abstract class ServerConfigBase {
 	const DB_CHARSET   = 'utf8';
 	const DB_COLLATE   = '';
 	const TABLE_PREFIX = 'wp_';
+
+	// Keys
+	const AUTH_KEY        = 'auth_key';
+	const SECURE_AUTH_KEY = 'secure_auth_key';
+	const LOGGED_IN_KEY   = 'logged_in_key';
+	const NONCE_KEY       = 'nonce_key';
+
+	// Salts
+	const SITE_SALT        = ''; // Used in the salt and key generator
+	const AUTH_SALT        = 'auth_salt';
+	const SECURE_AUTH_SALT = 'secure_auth_salt';
+	const LOGGED_IN_SALT   = 'logged_in_salt';
+	const NONCE_SALT       = 'nonce_salt';
+	const CACHE_SALT       = 'cache_salt';
 
 	// Caching
 	const WP_CACHE = false;
@@ -86,15 +99,29 @@ abstract class ServerConfigBase {
 
 	public $db_cfg;
 	public $memcached_servers;
+	public $auth_key;
+	public $secure_auth_key;
+	public $logged_in_key;
+	public $nonce_key;
+	public $auth_salt;
+	public $secure_auth_salt;
+	public $logged_in_salt;
+	public $nonce_salt;
+	public $cache_salt;
+	public $sitename;
 
 
 	public function __construct() {
-		$this->set_db_credentials();
-		$this->set_keys_and_salts();
-		$this->set_caching_options();
-		$this->set_hyperdb_cfg();
-		$this->set_logging_options();
-		$this->set_debug_options();
+		$this->auth_key = $this->get_salted_hash( static::AUTH_KEY );
+		$this->secure_auth_key = $this->get_salted_hash( static::SECURE_AUTH_KEY );
+		$this->logged_in_key = $this->get_salted_hash( static::LOGGED_IN_KEY );
+		$this->nonce_key = $this->get_salted_hash( static::NONCE_KEY );
+		$this->auth_salt = $this->get_salted_hash( static::AUTH_SALT );
+		$this->secure_auth_salt = $this->get_salted_hash( static::SECURE_AUTH_SALT );
+		$this->logged_in_salt = $this->get_salted_hash( static::LOGGED_IN_SALT );
+		$this->nonce_salt = $this->get_salted_hash( static::NONCE_SALT );
+		$this->cache_salt = $this->get_salted_hash( static::CACHE_SALT );
+		$this->sitename = $this->get_sitename();
 	}
 
 	public function get_version() {
@@ -103,44 +130,6 @@ abstract class ServerConfigBase {
 
 	public function get_salted_hash( $key ) {
 		return( sha1( static::SITE_SALT . $key ) );
-	}
-
-	public function get_auth_key() {
-		return( $this->get_salted_hash( 'auth_key' ) );
-	}
-
-	public function get_secure_auth_key() {
-		return( $this->get_salted_hash( 'secure_auth_key' ) );
-	}
-
-
-	public function get_logged_in_key() {
-		return( $this->get_salted_hash( 'logged_in_key' ) );
-	}
-
-	public function get_nonce_key() {
-		return( $this->get_salted_hash( 'nonce_key' ) );
-	}
-
-	public function get_auth_salt() {
-		return( $this->get_salted_hash( 'auth_salt' ) );
-	}
-
-	public function get_secure_auth_salt() {
-		return( $this->get_salted_hash( 'secure_auth_salt' ) );
-	}
-
-	public function get_logged_in_salt() {
-		return( $this->get_salted_hash( 'logged_in_salt' ) );
-	}
-
-
-	public function get_nonce_salt() {
-		return( $this->get_salted_hash( 'nonce_salt' ) );
-	}
-
-	public function get_cache_salt() {
-		return( $this->get_salted_hash( 'cache_salt' ) );
 	}
 
 	public function check_caching_options() {
@@ -157,9 +146,8 @@ abstract class ServerConfigBase {
 		$schema = static::PROTOCOL . self::PROTOCOL_DELIM;
 		if ( CLI_Controller::is_cli() && $this->sitename !== '' ) {
 			return( $schema . static::SITENAME );
-		} else {
-			return( $schema . $_SERVER['HTTP_HOST'] );
 		}
+		return( $this->sitename = $_SERVER['REQUEST_SCHEME'] . self::PROTOCOL_DELIM . $_SERVER['HTTP_HOST'] );
 	}
 
 }

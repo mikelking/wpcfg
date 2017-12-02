@@ -42,12 +42,12 @@ define( 'DISALLOW_FILE_EDIT', $scf->server_cfg::BLOCK_FILE_EDITS );
 define( 'DISALLOW_FILE_MODS', $scf->server_cfg::BLOCK_FILE_MODS );
 define( 'AUTOSAVE_INTERVAL', $scf->server_cfg::AUTO_SAVE_DELAY ); // 1 day
 
-define( 'DEFAULT_ERROR_LEVEL', $scf->server_cfg::error_level );
-error_reporting( $scf->server_cfg::reporting_level );
+define( 'DEFAULT_ERROR_LEVEL', $scf->server_cfg::ERROR_LEVEL );
+error_reporting( $scf->server_cfg::REPORTING_LEVEL );
 
 define( 'WP_CACHE', $scf->server_cfg::WP_CACHE );
-if ( isset( $scf->server_cfg::memcached_servers ) ) {
-	$memcached_servers = $scf->server_cfg::memcached_servers;
+if ( isset( $scf->server_cfg->memcached_servers ) ) {
+	$memcached_servers = $scf->server_cfg->memcached_servers;
 }
 
 define( 'AUTH_KEY',  $scf->server_cfg->auth_key );

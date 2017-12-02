@@ -49,7 +49,7 @@ abstract class ServerConfigBase {
 	// CMS Settings
 	const AUTO_SAVE_DELAY       = 86400; // seconds
 	const WP_TURN_OFF_ADMIN_BAR = false;
-	const WP_POST_REVISIONS     = false;
+	const WP_POST_REVISIONS     = 10;
 
 	// File System
 	const BLOCK_FILE_EDITS = false;

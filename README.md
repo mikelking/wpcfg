@@ -1,6 +1,6 @@
 # WordPress Configurator
 
-Enables you to store your entire WordPress configuration in an addressable object. 
+Enables you to store your entire WordPress application configuration in an addressable object relative to the server environment. 
 
 - The system also assumes that your WordPress web tree will live inside of the wproot. This is to work around the issue with composer projects not cohabitating well with other composer projects in the same directory.
 

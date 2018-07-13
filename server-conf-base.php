@@ -1,8 +1,8 @@
 <?php
 
 /*
-	This file contains the configuration specific to the http://dev.rd.com
-	@version 1.3
+	This file contains the configuration specific to the https://github.com/mikelking/wpcfg
+	@version 2.0
 */
 
 require( 'cli-controller.php' );

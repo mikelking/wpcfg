@@ -16,6 +16,8 @@
 require( 'class_server_conf_finder.php' );
 $scf = new ServerConfFinder();
 
+$dcs = $_SERVER['REQUEST_SCHEME'] . $scf->server_cfg::PROTOCOL_DELIM . $scf->server_cfg::DOMAIN_CURRENT_SITE;
+
 define( 'DEFAULT_TIMEZONE', $scf->server_cfg::DEFAULT_TIMEZONE );
 
 define( 'DB_NAME', $scf->server_cfg::DB_NAME );
@@ -87,7 +89,7 @@ define( 'FORCE_SSL_ADMIN', $scf->server_cfg::FORCE_SSL_ADMIN );
 define( 'WP_ALLOW_MULTISITE', $scf->server_cfg::WP_ALLOW_MULTISITE );
 define( 'MULTISITE', $scf->server_cfg::MULTISITE );
 define( 'SUBDOMAIN_INSTALL', $scf->server_cfg::SUBDOMAIN_INSTALL );
-define( 'DOMAIN_CURRENT_SITE', $scf->server_cfg::DOMAIN_CURRENT_SITE );
+define( 'DOMAIN_CURRENT_SITE', $dcs );
 define( 'PATH_CURRENT_SITE', $scf->server_cfg::PATH_CURRENT_SITE );
 define( 'SITE_ID_CURRENT_SITE', $scf->server_cfg::SITE_ID_CURRENT_SITE );
 define( 'BLOG_ID_CURRENT_SITE', $scf->server_cfg::BLOG_ID_CURRENT_SITE );

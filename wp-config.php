@@ -16,6 +16,8 @@
 require( 'class_server_conf_finder.php' );
 $scf = new ServerConfFinder();
 
+print_r('Current config info: ' . $scf->server_cfg . PHP_EOL );
+
 $dcs = $_SERVER['REQUEST_SCHEME'] . $scf->server_cfg::PROTOCOL_DELIM . $scf->server_cfg::DOMAIN_CURRENT_SITE;
 
 define( 'DEFAULT_TIMEZONE', $scf->server_cfg::DEFAULT_TIMEZONE );

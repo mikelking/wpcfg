@@ -175,9 +175,18 @@ abstract class ServerConfigBase {
         $output .= sprintf( $fmt, static::LOGGED_IN_SALT, $this->logged_in_salt );
         $output .= sprintf( $fmt, static::NONCE_SALT, $this->nonce_salt );
         $output .= sprintf( $fmt, static::CACHE_SALT, $this->cache_salt );
+        $output .= sprintf( $fmt, 'WP_ALLOW_MULTISITE', static::WP_ALLOW_MULTISITE );
+        $output .= sprintf( $fmt, 'MULTISITE', static::MULTISITE );
+        $output .= sprintf( $fmt, 'SUBDOMAIN_INSTALL', static::SUBDOMAIN_INSTALL );
+        $output .= sprintf( $fmt, 'PATH_CURRENT_SITE', static::PATH_CURRENT_SITE );
+        $output .= sprintf( $fmt, 'SITE_ID_CURRENT_SITE', static::SITE_ID_CURRENT_SITE );
+        $output .= sprintf( $fmt, 'BLOG_ID_CURRENT_SITE', static::BLOG_ID_CURRENT_SITE );
+        $output .= sprintf( $fmt, 'COOKIE_DOMAIN', $this->sitename );
+        //$output .= sprintf( $fmt, static::SECURE_AUTH_KEY, static::MULTISITE );
+        //$output .= sprintf( $fmt, static::SECURE_AUTH_KEY, static::MULTISITE );
+
+        $output .= sprintf( 'Current deployed version: %s', $this->get_revision() );
 
         return( $output );
     }
-
-
 }

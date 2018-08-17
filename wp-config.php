@@ -16,9 +16,9 @@
 require( 'class_server_conf_finder.php' );
 $scf = new ServerConfFinder();
 
-print_r('Current config info: ' . $scf->server_cfg . PHP_EOL );
+//print_r('Current config info:<br />' . $scf->server_cfg . PHP_EOL );
 
-$dcs = $_SERVER['REQUEST_SCHEME'] . $scf->server_cfg::PROTOCOL_DELIM . $scf->server_cfg::DOMAIN_CURRENT_SITE;
+//$dcs = $_SERVER['REQUEST_SCHEME'] . $scf->server_cfg::PROTOCOL_DELIM . $scf->server_cfg::DOMAIN_CURRENT_SITE;
 
 define( 'DEFAULT_TIMEZONE', $scf->server_cfg::DEFAULT_TIMEZONE );
 
@@ -68,7 +68,7 @@ define( 'WP_CACHE_KEY_SALT', $scf->server_cfg->cache_salt );
  * Needs to check multisite constant and adjust CD accordingly
  * temporarily removing $scf->server_cfg::COOKIE_DOMAIN
  */
-define( 'COOKIE_DOMAIN', $scf->server_cfg->sitename );
+define( 'COOKIE_DOMAIN', $scf->server_cfg->cookie_domain );
 
 /** Override the WordPress setting for the Blog URL **/
 /** Allow development environment movement */

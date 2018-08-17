@@ -77,7 +77,8 @@ abstract class ServerConfigBase {
     const WP_AUTO_UPDATE_CORE        = false;
 
     // Security SSL not necessary if you entire site is HTTPS
-    const COOKIE_DOMAIN = '';
+    const COOKIE_DOMAIN   = ''; // will be redacted in a future release
+    const COOKIE_PATH     = ''; // will be redacted in a future release
     const FORCE_SSL_LOGIN = false;
     const FORCE_SSL_ADMIN = false;
 
@@ -110,6 +111,7 @@ abstract class ServerConfigBase {
     public $nonce_salt;
     public $cache_salt;
     public $sitename;
+    public $cookie_domain;
     public $revision;
 
 
@@ -152,6 +154,13 @@ abstract class ServerConfigBase {
     }
 
     /**
+     * Dynamically sets the cookie domain
+     */
+    public function setCookieDomain() {
+        $this->cookie_domain = $_SERVER['HTTP_HOST'];
+    }
+
+    /**
      * @return string
      */
     public function get_sitename() {
@@ -186,9 +195,8 @@ abstract class ServerConfigBase {
         $output .= sprintf( $fmt, 'PATH_CURRENT_SITE', static::PATH_CURRENT_SITE );
         $output .= sprintf( $fmt, 'SITE_ID_CURRENT_SITE', static::SITE_ID_CURRENT_SITE );
         $output .= sprintf( $fmt, 'BLOG_ID_CURRENT_SITE', static::BLOG_ID_CURRENT_SITE );
-        $output .= sprintf( $fmt, 'COOKIE_DOMAIN', $this->sitename );
-        //$output .= sprintf( $fmt, static::SECURE_AUTH_KEY, static::MULTISITE );
-        //$output .= sprintf( $fmt, static::SECURE_AUTH_KEY, static::MULTISITE );
+        $output .= sprintf( $fmt, 'COOKIE_DOMAIN', $this->cookie_domain );
+
         $output .= sprintf( 'Current deployed version: %s', $this->get_revision() );
 
         return( $output );

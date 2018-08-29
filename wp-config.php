@@ -63,8 +63,18 @@ define( 'WP_CACHE_KEY_SALT', $scf->server_cfg->cache_salt );
 /**
  * Needs to check multisite constant and adjust CD accordingly
  * temporarily removing $scf->server_cfg::COOKIE_DOMAIN
+ *
+ * All of my attempts to add some sort of logical hydration have
+ * failed. Since the cookie domain is not necessary for wp cli modes
+ * I think it is safest to just live with the super global.
+ *
+ * Normally I would not leave debugging code around like this but I
+ * want to investigate further.
  */
-define( 'COOKIE_DOMAIN', $scf->server_cfg->cookie_domain );
+//print( '<h2>The cookie domain is: ' . $scf->server_cfg->cookie_domain . '</h2>' . PHP_EOL );
+//print( '<h2>The HTTP_HOST is: ' . $_SERVER['HTTP_HOST'] . '</h2>' . PHP_EOL );
+define( 'COOKIE_DOMAIN', $_SERVER['HTTP_HOST'] );
+//define( 'COOKIE_DOMAIN', $scf->server_cfg->cookie_domain );
 
 /** Override the WordPress setting for the Blog URL **/
 /** Allow development environment movement */

@@ -28,6 +28,26 @@ Enables you to store your entire WordPress application configuration in an addre
      Options FollowSymLinks
      AllowOverride All
      Require all granted
+     ####
+     # The following is an example of the WordPress MultiSite rewrite rules
+     # that most people stuff in the under performing .htaccess file.
+     # If you have access to the vhost then boost your perofrmance and ditch
+     # the .htaccess
+     # see https://codex.wordpress.org/htaccess
+     #
+     RewriteEngine On
+     RewriteBase /
+     RewriteRule ^index\.php$ - [L]
+
+     # add a trailing slash to /wp-admin
+     RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
+
+     RewriteCond %{REQUEST_FILENAME} -f [OR]
+     RewriteCond %{REQUEST_FILENAME} -d
+     RewriteRule ^ - [L]
+     RewriteRule ^(wp-(content|admin|includes).*) $1 [L]
+     RewriteRule ^(.*\.php)$ $1 [L]
+     RewriteRule . index.php [L]
   </Directory>
   ErrorLog /data/DOMAIN.com/logs/error_log
   CustomLog /data/DOMAIN.com/logs/access_log common

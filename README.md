@@ -55,6 +55,8 @@ Enables you to store your entire WordPress application configuration in an addre
 
 ```
 
+
+- Also if you are looking to really rock the vhost take a look at https://github.com/gregrickaby/The-Perfect-Apache-Configuration/blob/master/http.conf you will need to ensure taht mod expires and mod headers is activated.
  
 - It also can detect if the site it is running on is a dev or test based on some domain name URL checks but this will be phased out. 
  

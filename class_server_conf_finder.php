@@ -3,12 +3,15 @@
 /*
 	This system leverages the Apache server SetEvn mod.
 	SetEnv ENVIRONMENT [dev, staging, test, production1, production2, production3]
-	@version 1.3
+	@version 0.1.9
 */
 
+require( __DIR__ . '/cli-controller.php' );
+
 class ServerConfFinder {
-	const VERSION     = '1.0';
+	const VERSION     = '0.1.9';
 	const FILE_SUFFIX = '-conf.php';
+	const DEFAULT_CFG = 'production';
 	const DEV_SITE    = 'dev';
 	const TEST_SITE   = 'test';
 	const DIR_DELIM   = '/';
@@ -34,6 +37,8 @@ class ServerConfFinder {
 	public function set_environment( $environment = null ) {
 		if ( isset( $environment ) ) {
 			$this->environment = $environment;
+		} elseif ( CLI_Controller::is_cli() ) {
+			$this->environment = static::DEFAULT_CFG;
 		}
 	}
 

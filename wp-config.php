@@ -13,7 +13,7 @@
  * Ultimately this may need to become some sort of additional composer project.
  */
 
-require( 'class_server_conf_finder.php' );
+require( __DIR__ . '/class_server_conf_finder.php' );
 $scf = new ServerConfFinder();
 
 define( 'DEFAULT_TIMEZONE', $scf->server_cfg::DEFAULT_TIMEZONE );

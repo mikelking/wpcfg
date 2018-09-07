@@ -2,7 +2,7 @@
 
 /*
     This file contains the configuration specific to the https://github.com/mikelking/wpcfg
-    @version 2.0
+    @version 0.1.9
 */
 
 //require( 'cli-controller.php' );
@@ -13,7 +13,7 @@
  * The grouping are intentional to make the settings more readable.
  */
 abstract class ServerConfigBase {
-    const VERSION          = '2.0';
+    const VERSION          = '0.1.9';
     const REVISION_FILE    = 'revision';
     const SITE_ID          = 0; // used for single site 2 multi site consistency
     const SITENAME         = ''; // user for wp cli

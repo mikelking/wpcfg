@@ -3,13 +3,13 @@
 /*
 	This system leverages the Apache server SetEvn mod.
 	SetEnv ENVIRONMENT [dev, staging, test, production1, production2, production3]
-	@version 1.4.0
+	@version 0.1.9
 */
 
 require( __DIR__ . '/cli-controller.php' );
 
 class ServerConfFinder {
-	const VERSION     = '1.4.0';
+	const VERSION     = '0.1.9';
 	const FILE_SUFFIX = '-conf.php';
 	const DEFAULT_CFG = 'production';
 	const DEV_SITE    = 'dev';

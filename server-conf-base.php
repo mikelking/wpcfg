@@ -5,7 +5,7 @@
     @version 2.0
 */
 
-require( 'cli-controller.php' );
+//require( 'cli-controller.php' );
 
 /**
  * Class ServerConfigBase
